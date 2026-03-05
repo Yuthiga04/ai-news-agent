@@ -1,0 +1,24 @@
+import os
+from groq import Groq
+
+client = Groq(
+    api_key=os.getenv("GROQ_API_KEY"))
+
+def summarize_news(text):
+
+    prompt = f"""
+    Summarize the following news headlines into a short daily briefing
+    with 5 bullet points:
+
+    {text}
+    """
+
+    response = client.chat.completions.create(
+        model="llama-3.1-8b-instant",
+        messages=[
+            {"role": "user", "content": prompt}
+        ],
+        temperature=0.3,
+    )
+
+    return response.choices[0].message.content
