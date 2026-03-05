@@ -2,7 +2,7 @@ name: AI News Agent
 
 on:
   schedule:
-    - cron: "*/30 12 * * *"   # runs every day at 6pm IST
+    - cron: "*/30 1 * * *"   # runs every day at 6pm IST
   workflow_dispatch:
 
 jobs:
