@@ -37,6 +37,8 @@
 from scraper.scraper import scrape_bbc
 from scraper.reuters_scraper import scrape_reuters
 from scraper.cnn_scraper import scrape_cnn
+from scraper.aljazeera_scraper import scrape_aljazeera
+from scraper.ndtv_scraper import scrape_ndtv
 
 from database.db import save_article, get_today_articles
 from ai.summarizer import summarize_news
@@ -48,6 +50,8 @@ news = []
 news.extend(scrape_bbc())
 news.extend(scrape_reuters())
 news.extend(scrape_cnn())
+news.extend(scrape_aljazeera())
+news.extend(scrape_ndtv())
 
 # store with duplicate filtering
 for article in news:
