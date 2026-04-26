@@ -6,12 +6,16 @@ def scrape_reuters():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         page = browser.new_page()
+        
+        page.goto("https://www.reuters.com/world/", timeout=60000)
 
-        page.goto("https://www.reuters.com/world/")
+        # wait properly for page load
+        page.wait_for_load_state("domcontentloaded")
+        
+        # small delay (important for GitHub)
+        page.wait_for_timeout(3000)
 
-        page.wait_for_selector("a")
-
-        items = page.query_selector_all("a")
+        items = page.query_selector_all("a[href]")
 
         for item in items:
             title = item.inner_text().strip()
