@@ -7,9 +7,12 @@ client = Groq(
 def summarize_news(text):
 
     prompt = f"""
-    Summarize the following news headlines into a short daily briefing
-    with 5 bullet points:
-
+    You are a news intelligence agent.
+    
+    From the following multi-source news headlines (BBC, Reuters, CNN),
+    identify the 5 most important global stories and summarize them clearly.
+    
+    Headlines:
     {text}
     """
 
