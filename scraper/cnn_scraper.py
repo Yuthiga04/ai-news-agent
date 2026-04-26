@@ -1,3 +1,5 @@
+from playwright.sync_api import sync_playwright
+
 def scrape_cnn():
     articles = []
 
